@@ -68,6 +68,16 @@ python generate_esri_map_ankara.py  # İnteraktif harita oluştur
 | `Ankara_OSM_Yol_Guvenligi_Raporu.xlsx` | 9 sayfalık Excel raporu |
 | `Ankara_OSM_Tum_Kusurlar.csv` | 98.703 noktalık ham veri (XY + lon/lat) |
 
+### 🗺️ Google Maps Entegrasyonu
+
+Haritanın her kusur noktasında **"🗺️ Google Maps'te Aç"** butonu bulunur. Butona tıkladığınızda ilgili konum:
+
+```
+https://www.google.com/maps/search/?api=1&query=LAT,LNG
+```
+
+adresi yeni sekmede açılır.
+
 ### Lisans
 
 MIT License
@@ -141,6 +151,16 @@ python generate_esri_map_ankara.py  # Generate interactive map
 ### Interactive Demo
 
 🌐 **[Ankara Yol Güvenliği Haritası](https://darkeaglehome.github.io/ankara-yol-guvenligi/Ankara_OSM_Kusurlar_Esri_Harita.html)**
+
+### 🗺️ Google Maps Integration
+
+Every hazard point in the map popup includes a **"🗺️ Open in Google Maps"** button. Clicking it opens the selected defect location in Google Maps:
+
+```
+https://www.google.com/maps/search/?api=1&query=LAT,LNG
+```
+
+in a new tab.
 
 ### License
 
