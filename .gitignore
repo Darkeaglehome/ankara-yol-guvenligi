@@ -1,0 +1,21 @@
+# Büyük dosyalar ve geçici dosyalar
+*.tif
+*.tiff
+*.pbf
+*.log
+__pycache__/
+*.pyc
+*.pyo
+
+# Rapor görselleri (çok büyük)
+rapor_gorselleri/*.png
+
+# Geçici
+_head20.csv
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Git
+.git/
