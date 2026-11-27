@@ -567,9 +567,10 @@ function popupHtml(i){
   var lvlL = D.levels[D.l[i]];
   var lvlC = D.levelColors[D.l[i]];
   var unit = ['m', 'm', '°', '', 'm', '%'][D.k[i]];
+  var gmapUrl = 'https://www.google.com/maps/search/?api=1&query=' + D.lat[i].toFixed(5) + ',' + D.lon[i].toFixed(5);
   return '<div class="ptitle">' + kindL + '</div>' +
     '<table class="popt">' +
-    '<tr><td>Kusur değeri</td><td>' + D.v[i] + ' ' + unit + '</td></tr>' +
+    '<tr><td>Kusur değeri</td><td>' + parseFloat(D.v[i]).toFixed(1) + ' ' + unit + '</td></tr>' +
     '<tr><td>Risk seviyesi</td><td><b style="color:'+lvlC+'">' + lvlL +
       ' (' + D.r[i].toFixed(1) + ')</b></td></tr>' +
     '<tr><td>İlçe</td><td>' + D.ilceler[D.i[i]] + '</td></tr>' +
@@ -583,7 +584,8 @@ function popupHtml(i){
     '<tr><td>Koordinat (WGS84)</td><td class="coord">lon: ' +
       D.lon[i].toFixed(5) + '<br>lat: ' + D.lat[i].toFixed(5) + '</td></tr>' +
     '<tr><td>OSM id</td><td>' + (D.osmid ? D.osmid[i] : '-') + '</td></tr>' +
-    '</table>';
+    '</table>' +
+    '<a class="gmapbtn" href="' + gmapUrl + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;background:#1B365D;color:#fff;padding:6px 12px;border-radius:4px;font-size:12px;text-decoration:none">🗺 Google Maps&#39;te Aç</a>';
 }
 
 map.on('click', function(e){
