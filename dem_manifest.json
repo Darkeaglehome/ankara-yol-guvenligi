@@ -1,0 +1,29 @@
+{
+  "kaynak": "Copernicus DEM GLO-30 (AWS Open Data, copernicus-dem-30m)",
+  "lisans": "Copernicus DEM - ESA, serbest kullanim (atıf ile)",
+  "kapsam": {
+    "lon": [
+      30.75,
+      34.0
+    ],
+    "lat": [
+      38.6,
+      40.8
+    ]
+  },
+  "cozunurluk_m": 30,
+  "egim_yontemi": "Horn (1981) 3x3, UTM 36N",
+  "uretim_tarihi": "2026-11-27",
+  "dosyalar": [
+    "dem_ankara.tif",
+    "dem_ankara_utm.tif",
+    "egim_ankara_utm.tif"
+  ],
+  "istatistik": {
+    "egim_yuzde_medyan": 9.2,
+    "egim_yuzde_p95": 42.56,
+    "egim_yuzde_max": 214.57,
+    "kot_min_m": 66.1,
+    "kot_max_m": 2381.4
+  }
+}

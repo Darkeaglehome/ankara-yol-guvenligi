@@ -10,6 +10,15 @@ __pycache__/
 # Rapor görselleri (çok büyük)
 rapor_gorselleri/*.png
 
+# Ham / ara veri dosyaları (GitHub 100 MB dosya limiti)
+overpass_*.json
+osm_roads_ankara.jsonl
+osm_intersections.jsonl
+osm_deadends.jsonl
+osm_turning_circles.jsonl
+ankara_geom_kusurlar.jsonl
+egim_kusurlar.jsonl
+
 # Geçici
 _head20.csv
 

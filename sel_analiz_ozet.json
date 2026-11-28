@@ -1,0 +1,19 @@
+{
+  "tarih": "2026-11-28",
+  "alt_gecit_yapisi": 204,
+  "alt_gecit_way": 1448,
+  "yaya_alt_gecidi": 49,
+  "arac_alt_gecidi": 117,
+  "arac_tuneli": 22,
+  "yapi_gecisi": 8,
+  "cok_yuksek": 2,
+  "yuksek": 20,
+  "orta": 32,
+  "yol_sel_noktasi": 400,
+  "yol_sel_yuksek": 113,
+  "yol_sel_kentsel": 344,
+  "ortalama_risk": 31.2,
+  "en_yuksek_risk": 75.0,
+  "su_yolu_sayisi": 5450,
+  "ilce_sayisi": 8
+}
