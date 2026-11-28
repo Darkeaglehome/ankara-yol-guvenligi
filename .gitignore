@@ -10,6 +10,19 @@ __pycache__/
 # Rapor görselleri (çok büyük)
 rapor_gorselleri/*.png
 
+# Alt geçit sel riski paketi ayrı depoda: ankara-altgecit-sel-riski
+Ankara_OSM_Alt_Gecit_Sel_Harita.html
+Ankara_Alt_Gecit_Sel_Risk_Raporu.docx
+Ankara_Alt_Gecit_Sel_Analizi.xlsx
+Ankara_OSM_Alt_Gecitler.csv
+Ankara_OSM_Sel_Riskli_Noktalar.csv
+Ankara_OSM_Sel_Ilce_Ozeti.csv
+sel_analiz_ozet.json
+osm_altgecitler.jsonl
+altgecit_sel_ankara.py
+generate_sel_*.py
+_yayin_sel/
+
 # Ham / ara veri dosyaları (GitHub 100 MB dosya limiti)
 overpass_*.json
 osm_roads_ankara.jsonl

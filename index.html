@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ankara Ulaşım Altyapısı Risk Analizleri</title>
-<meta name="description" content="OpenStreetMap ve Copernicus DEM ile Ankara'da yol güvenliği ve alt geçit sel riski analizleri.">
+<title>Ankara Yol Güvenliği ve Geometrik Kusur Analizi</title>
+<meta name="description" content="OpenStreetMap ve Copernicus DEM ile Ankara yol ağının geometrik ve topolojik kusurlarının YGE 0-100 risk modeliyle analizi.">
 <style>
   :root {
     --navy:#1B365D; --navy-dark:#12253f; --red:#C0392B; --text:#2C3E50;
@@ -45,7 +45,7 @@
   h2 { font-size:24px; color:var(--navy); margin:0 0 6px; letter-spacing:-.3px; }
   .sub { color:var(--muted); font-size:14px; margin:0 0 28px; }
 
-  .cards { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .cards { display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:start; }
   .card { background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
           display:flex; flex-direction:column; transition:transform .18s ease, box-shadow .18s ease; }
   .card:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(27,54,93,.12); }
@@ -53,7 +53,6 @@
   .tag { display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.8px;
          text-transform:uppercase; padding:3px 9px; border-radius:20px; }
   .tag.blue { background:#EAF2F8; color:var(--navy); }
-  .tag.red { background:#FDEDEC; color:var(--red); }
   .card h3 { font-size:19px; margin:12px 0 8px; color:var(--navy); }
   .card p { font-size:14px; color:#4A5A6A; margin:0 0 16px; }
   .metrics { display:flex; gap:18px; border-top:1px dashed var(--line);
@@ -66,6 +65,11 @@
   .btn.primary { background:var(--navy); color:#fff; }
   .btn.ghost { border-color:#CFD9E4; background:#fff; color:var(--navy); }
   .btn:hover { filter:brightness(1.12); }
+
+  ul.types { margin:0 0 18px; padding:0; list-style:none; font-size:13px; }
+  ul.types li { padding:7px 0; border-bottom:1px solid #F1F4F7; display:flex; justify-content:space-between; gap:12px; }
+  ul.types li:last-child { border-bottom:0; }
+  ul.types span { color:var(--muted); font-size:12px; white-space:nowrap; }
 
   .method { background:#fff; border:1px solid var(--line); border-radius:14px; padding:28px 30px; }
   .method h3 { margin:0 0 4px; font-size:16px; color:var(--navy); }
@@ -92,12 +96,12 @@
 
 <header>
   <div class="wrap">
-    <div class="kicker">Ankara · Açık Veri · Ulaşım Altyapısı</div>
-    <h1>Ankara Ulaşım Altyapısı<br>Risk Analizleri</h1>
+    <div class="kicker">Ankara · Açık Veri · Yol Güvenliği</div>
+    <h1>Ankara Yol Güvenliği ve<br>Geometrik Kusur Analizi</h1>
     <p>
-      OpenStreetMap ve Copernicus DEM GLO-30 ile Ankara il sınırlarındaki yol ağının
-      geometrik kusurlarını ve alt geçit/tünel yapılarının sel riskini tespit eden,
-      interaktif haritalarla desteklenmiş iki analiz.
+      OpenStreetMap ve Copernicus DEM verileriyle Ankara il sınırlarındaki yol ağının
+      geometrik ve topolojik kusurlarını tespit eden, 98.703 tekil tehlike bölgesini
+      YGE 0-100 risk modeliyle sınıflandıran analiz.
     </p>
     <div class="src">
       <span>OpenStreetMap</span>
@@ -111,14 +115,14 @@
 <div class="wrap">
   <div class="stats">
     <div class="stat"><b>98.703</b><span>tekil tehlike bölgesi</span></div>
-    <div class="stat"><b>204</b><span>alt geçit / tünel yapısı</span></div>
-    <div class="stat"><b>5.450</b><span>hidrolojik referans su yolu</span></div>
+    <div class="stat"><b>110.870</b><span>OSM yol parçası</span></div>
+    <div class="stat"><b>6</b><span>kusur türü</span></div>
     <div class="stat"><b>40.511 km</b><span>modellenen yol ağı</span></div>
   </div>
 
   <section>
-    <h2>Analizler</h2>
-    <p class="sub">Her analiz kendi interaktif haritası, Word raporu ve ham veri dosyalarıyla birlikte yayınlanır.</p>
+    <h2>Analiz</h2>
+    <p class="sub">Kusurlar harita üzerinde YGE 0-100 skoruyla sınıflandırılır; her noktadan Google Maps'e geçiş vardır.</p>
 
     <div class="cards">
       <article class="card">
@@ -126,13 +130,14 @@
           <span class="tag blue">Yol Güvenliği</span>
           <h3>Geometrik ve Topolojik Kusur Analizi</h3>
           <p>
-            Keskin viraj, dar kesit, dar açılı kavşak, çıkmaz sokak ve dik eğim gibi
-            kaza tetikleyici altyapı kusurlarını YGE 0-100 risk modeliyle sınıflandırır.
+            Keskin viraj, dar kesit, dar açılı kavşak, çıkmaz sokak, dönüş cebi ve
+            dik boyuna eğim gibi kaza tetikleyici altyapı kusurlarını OSM geometrisi
+            ve 30 m DEM üzerinden otomatik tespit eder.
           </p>
           <div class="metrics">
             <div><b>98.703</b>tekil nokta</div>
-            <div><b>6</b>kusur türü</div>
             <div><b>0-100</b>YGE skoru</div>
+            <div><b>4</b>harita altlığı</div>
           </div>
         </div>
         <div class="actions">
@@ -145,24 +150,20 @@
 
       <article class="card">
         <div class="top">
-          <span class="tag red">Sel Riski</span>
-          <h3>Alt Geçit ve Tünel Su Baskını Analizi</h3>
-          <p>
-            OSM'deki <code>tunnel</code> / <code>layer&lt;0</code> yapılarını envanterleyip
-            DEM üzerinde Priority-Flood akış birikimiyle 0-100 sel risk skoru hesaplar;
-            şehir genelinde riskli yol kesimlerini de tarar.
-          </p>
-          <div class="metrics">
-            <div><b>204</b>yapı</div>
-            <div><b>22</b>yüksek öncelikli</div>
-            <div><b>400</b>riskli yol kesimi</div>
-          </div>
+          <span class="tag blue">Kapsam</span>
+          <h3>Kusur Türleri ve Eşikler</h3>
+          <ul class="types">
+            <li>Keskin Viraj <span>R ≤ 75 m</span></li>
+            <li>Dar Kesit <span>W ≤ 5,5 m</span></li>
+            <li>Dar Açılı Kavşak <span>θ ≤ 45°</span></li>
+            <li>Çıkmaz Sokak <span>ana yola çıkmaz</span></li>
+            <li>Dönüş Cebi <span>U dönüşü kısıtlı</span></li>
+            <li>Dik Boyuna Eğim <span>g ≥ %8</span></li>
+          </ul>
         </div>
         <div class="actions">
-          <a class="btn primary" href="Ankara_OSM_Alt_Gecit_Sel_Harita.html">Haritayı Aç</a>
-          <a class="btn ghost" href="Ankara_Alt_Gecit_Sel_Risk_Raporu.docx">Word Raporu</a>
-          <a class="btn ghost" href="Ankara_Alt_Gecit_Sel_Analizi.xlsx">Excel</a>
-          <a class="btn ghost" href="Ankara_OSM_Alt_Gecitler.csv">Envanter CSV</a>
+          <a class="btn ghost" href="Ankara_OSM_Tum_Kusurlar.csv">Tüm Kusurlar (CSV)</a>
+          <a class="btn ghost" href="Ankara_OSM_Ilce_Ozeti.csv">İlçe Özeti</a>
         </div>
       </article>
     </div>
@@ -172,25 +173,24 @@
     <h2>Yöntem</h2>
     <p class="sub">Tamamı açık veri; saha ölçümü içermeyen ön değerlendirme.</p>
     <div class="method">
-      <h3>Yol güvenliği</h3>
+      <h3>Kusur tespiti</h3>
       <p>
-        OSM yol merkez çizgilerinden eğrilik yarıçapı, kesit genişliği, kavşak açısı ve
-        topolojik çıkmazlar hesaplanır; Copernicus DEM'den boyuna eğim çıkarılır.
-        Bileşenler YGE 0-100 skoruna ağırlıklandırılarak birleştirilir.
+        Yol merkez çizgileri 10 m aralıkla örneklenir; eğrilik yarıçapı <code>R = ds/dθ</code>
+        ile, kavşak kolları arasındaki açı vektör geometrisiyle hesaplanır. Genişlik ve
+        çıkmaz sokak bilgisi OSM etiketleri ile topolojiden, boyuna eğim ise DEM'den türetilir.
       </p>
-      <h3>Sel riski</h3>
+      <h3>Risk skoru</h3>
       <p>
-        Her alt geçidin en düşük kotlu noktası DEM üzerinde bulunur; 1,2-1,5 km pencerede
-        Priority-Flood akış birikimi, havza derinliği, memba eğimi ve dere yakınlığı
-        hesaplanır. Skor: çukur (25), akış birikimi (25), havza derinliği (12),
-        memba eğimi (12), dere yakınlığı (10), maruziyet (16).
+        Her kusur tipi kendi tehlike ağırlığıyla YGE 0-100 skoruna dönüştürülür; 75 ve üzeri
+        <strong>Kritik Kara Nokta</strong>, 55-74 <strong>Yüksek</strong>, 35-54 <strong>Orta</strong>,
+        35 altı <strong>Düşük</strong> risk olarak sınıflandırılır.
       </p>
       <div class="chips">
-        <span class="chip">Priority-Flood akış birikimi</span>
-        <span class="chip">30 m DEM</span>
-        <span class="chip">80 m yapı birleştirme</span>
+        <span class="chip">10 m örnekleme</span>
+        <span class="chip">Eğrilik analizi</span>
+        <span class="chip">Kavşak açısı</span>
+        <span class="chip">DEM eğim</span>
         <span class="chip">Google Maps bağlantılı popup'lar</span>
-        <span class="chip">ESRI Uydu / Sokak / Topo / Koyu altlık</span>
       </div>
     </div>
   </section>

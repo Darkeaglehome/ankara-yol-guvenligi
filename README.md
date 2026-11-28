@@ -57,11 +57,6 @@ pip install geopandas shapely rasterio numpy pandas scipy matplotlib seaborn fol
 python aggregate_ankara.py          # Kusurları tespit et, risk skorla
 python generate_word_ankara.py      # Word raporu oluştur
 python generate_esri_map_ankara.py  # İnteraktif harita oluştur
-
-python altgecit_sel_ankara.py             # Alt geçit envanteri + sel riski analizi
-python generate_sel_word_ankara.py        # Sel riski Word raporu
-python generate_sel_excel_ankara.py       # Sel riski Excel kitabı
-python generate_sel_map_ankara.py         # İnteraktif sel riski haritası
 ```
 
 ### Çıktılar
@@ -72,40 +67,6 @@ python generate_sel_map_ankara.py         # İnteraktif sel riski haritası
 | `Ankara_Yol_Guvenligi_ve_Kusur_Analizi_Raporu.docx` | Kapsamlı Word raporu |
 | `Ankara_OSM_Yol_Guvenligi_Raporu.xlsx` | 9 sayfalık Excel raporu |
 | `Ankara_OSM_Tum_Kusurlar.csv` | 98.703 noktalık ham veri (XY + lon/lat) |
-
-### 🚧 Alt Geçit ve Tünel Sel Riski Analizi
-
-Aynı proje kapsamında Ankara'daki **204 alt geçit/tünel yapısı** ve şehir genelinde **400 riskli yol kesimi** su baskını açısından değerlendirildi. Envanter OpenStreetMap'in `tunnel` / `layer<0` etiketlerinden, hidrolojik model ise Copernicus DEM GLO-30'dan üretildi.
-
-| Gösterge | Değer |
-|----------|-------|
-| Alt geçit / tünel yapısı | 204 (117 araç alt geçidi, 49 yaya, 22 tünel, 16 diğer) |
-| Çok Yüksek / Yüksek riskli yapı | 2 / 20 |
-| Taranan riskli yol kesimi | 400 (22 çok yüksek, 91 yüksek) |
-| Hidrolojik referans | 5.450 su yolu çizgisi |
-
-**Sel Risk Skoru (0-100)** altı bileşenden oluşur: çukur derinliği (25), akış birikimi (25), havza derinliği (12), memba eğimi (12), dere yakınlığı (10) ve maruziyet (16). Her yapının en düşük kotlu noktası DEM üzerinde bulunur; 1,2–1,5 km pencerede Priority-Flood akış birikimi hesaplanır.
-
-| Seviye | Skor | Renk |
-|--------|------|------|
-| 🔴 **Çok Yüksek** | 70-100 | Kırmızı |
-| 🟠 **Yüksek** | 55-69 | Turuncu |
-| 🟡 **Orta** | 35-54 | Sarı |
-| 🟢 **Düşük** | 20-34 | Yeşil |
-| ⚪ **Çok Düşük** | 0-19 | Gri |
-
-| Dosya | Açıklama |
-|-------|----------|
-| `Ankara_OSM_Alt_Gecit_Sel_Harita.html` | İnteraktif sel riski haritası (4 ESRI altlık, filtre, Google Maps) |
-| `Ankara_Alt_Gecit_Sel_Risk_Raporu.docx` | Word raporu (yöntem, sıralamalar, öneriler) |
-| `Ankara_Alt_Gecit_Sel_Analizi.xlsx` | 5 sayfalık Excel çalışma kitabı |
-| `Ankara_OSM_Alt_Gecitler.csv` | 204 yapının envanteri ve skor bileşenleri |
-| `Ankara_OSM_Sel_Riskli_Noktalar.csv` | Yapılar + 400 yol kesimi, öncelik sıralı |
-| `Ankara_OSM_Sel_Ilce_Ozeti.csv` | İlçe bazında risk özeti |
-
-🌐 **[Alt Geçit ve Sel Riski Haritası](https://darkeaglehome.github.io/ankara-yol-guvenligi/Ankara_OSM_Alt_Gecit_Sel_Harita.html)**
-
-> Rapor saha ölçümü içermez; karar destek amaçlı ön değerlendirmedir. Yüksek riskli noktalarda kesin kot, drenaj ve pompa kapasitesi ölçülmelidir.
 
 ### 🗺️ Google Maps Entegrasyonu
 
@@ -190,32 +151,6 @@ python generate_esri_map_ankara.py  # Generate interactive map
 ### Interactive Demo
 
 🌐 **[Ankara Yol Güvenliği Haritası](https://darkeaglehome.github.io/ankara-yol-guvenligi/Ankara_OSM_Kusurlar_Esri_Harita.html)**
-
-### 🚧 Underpass and Tunnel Flood Risk Analysis
-
-The same project assesses **204 underpass/tunnel structures** and **400 flood-prone road segments** across Ankara. The inventory comes from OpenStreetMap `tunnel` / `layer<0` tags, and the hydrological model uses Copernicus DEM GLO-30.
-
-| Indicator | Value |
-|-----------|-------|
-| Underpass / tunnel structures | 204 (117 road, 49 pedestrian, 22 tunnels, 16 other) |
-| Very High / High risk structures | 2 / 20 |
-| Flood-prone road segments screened | 400 (22 very high, 91 high) |
-| Hydrological reference | 5,450 waterway lines |
-
-**Flood Risk Score (0-100)** combines pit depth (25), flow accumulation (25), basin depth (12), upstream slope (12), waterway proximity (10) and exposure (16), computed with a Priority-Flood accumulation model on 30 m DEM.
-
-| File | Description |
-|------|-------------|
-| `Ankara_OSM_Alt_Gecit_Sel_Harita.html` | Interactive flood risk map (4 ESRI basemaps, filters, Google Maps) |
-| `Ankara_Alt_Gecit_Sel_Risk_Raporu.docx` | Word report (method, rankings, recommendations) |
-| `Ankara_Alt_Gecit_Sel_Analizi.xlsx` | 5-sheet Excel workbook |
-| `Ankara_OSM_Alt_Gecitler.csv` | Inventory of 204 structures with score components |
-| `Ankara_OSM_Sel_Riskli_Noktalar.csv` | Structures + 400 road segments, priority-sorted |
-| `Ankara_OSM_Sel_Ilce_Ozeti.csv` | District-level risk summary |
-
-🌐 **[Underpass & Flood Risk Map](https://darkeaglehome.github.io/ankara-yol-guvenligi/Ankara_OSM_Alt_Gecit_Sel_Harita.html)**
-
-> No field measurements are included; this is a screening-level assessment. Verify levels, drainage and pump capacity on site before design.
 
 ### 🗺️ Google Maps Integration
 
